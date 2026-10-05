@@ -89,3 +89,53 @@ c:\laragon\www\sikpeg\
 - **Tema Bebas Gangguan**: Menggunakan skema desain Tailwind yang kustom dengan *Dark Mode* elegan tanpa distorsi, dan menyimpan rekam jejak tema menggunakan memori sesi lokal.
 - **Transisi HTMX / SPA-like**: Aplikasi merender navigasi antar halaman tanpa *reload* secara buta, memberikan rasa aplikasi modern (*Single Page Application*) lewat sematan HTMX (`hx-boost`).
 - **Autentikasi Presisi**: Halaman Login berfokus murni pada utilitas *username* dan *password* yang disederhanakan tanpa embel-embel informasi eksternal opsional yang tidak diperlukan.
+
+---
+
+## 🛠️ Cara Instalasi (Lokal / Laragon)
+
+Berikut adalah langkah-langkah untuk melakukan instalasi aplikasi **SIKPEG Enterprise** di environment lokal Anda.
+
+1. **Clone/Siapkan Direktori Proyek**
+   Pastikan kode proyek sudah berada di folder lokal Anda (contoh: `c:\laragon\www\sikpeg`).
+
+2. **Install Dependensi PHP (Composer)**
+   Buka terminal di direktori proyek dan jalankan:
+   ```bash
+   composer install
+   ```
+
+3. **Install Dependensi Front-end (NPM)**
+   ```bash
+   npm install
+   ```
+
+4. **Siapkan Konfigurasi Environment**
+   Salin file konfigurasi bawaan dan sesuaikan nama databasenya:
+   ```bash
+   copy .env.example .env
+   ```
+   *Buka file `.env` dan pastikan konfigurasi koneksi database Anda (seperti `DB_DATABASE=sikpeg`, `DB_USERNAME=root`) sudah sesuai dengan database kosong yang Anda buat.*
+
+5. **Generate Application Key**
+   ```bash
+   php artisan key:generate
+   ```
+
+6. **Migrasi dan Seeding Database**
+   Jalankan perintah berikut untuk membuat struktur tabel dan menyuntikkan data awal (termasuk akun user dari `SikpegSeeder`):
+   ```bash
+   php artisan migrate --seed
+   ```
+
+7. **Compile Aset UI (Tailwind & Vite)**
+   ```bash
+   npm run build
+   ```
+   *(Gunakan `npm run dev` jika sedang melakukan pengembangan)*
+
+8. **Jalankan Aplikasi**
+   Jika menggunakan Laragon, pastikan Apache/Nginx & MySQL aktif dan buka di browser:
+   **http://sikpeg.test**
+   
+   *(Atau gunakan perintah `php artisan serve` dan akses `http://localhost:8000`)*
