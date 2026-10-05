@@ -128,12 +128,6 @@ Berikut adalah langkah-langkah untuk melakukan instalasi aplikasi **SIKPEG Enter
    php artisan migrate --seed
    ```
 
-7. **Compile Aset UI (Tailwind & Vite)**
-   ```bash
-   npm run build
-   ```
-   *(Gunakan `npm run dev` jika sedang melakukan pengembangan)*
-
 8. **Jalankan Aplikasi**
    Jika menggunakan Laragon, pastikan Apache/Nginx & MySQL aktif dan buka di browser:
    **http://sikpeg.test**
